@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Hide the inputs until you select a shape or operation
         hide(findViewById<TextView>(R.id.width1))
         hide(findViewById<TextView>(R.id.length1))
         hide(findViewById<EditText>(R.id.width2))
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<Spinner>(R.id.spinner2).adapter = arrayAdapterOperations
         findViewById<Spinner>(R.id.spinner1).adapter = arrayAdapterShapes
 
+        //Listner for the shape spinner to select a shape
         findViewById<Spinner>(R.id.spinner1).onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -64,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         }
-
+        //Listener for the operation spinner to select a operation
         findViewById<Spinner>(R.id.spinner2).onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -186,35 +188,87 @@ class MainActivity : AppCompatActivity() {
         view.visibility = View.VISIBLE
     }
 
+    /*
+    Calculates the parameter of a rectangle
+
+    @length: length of the longest rectangle side
+    @width: length of the shortest rectangle side
+    @return: rectangle perimeter
+     */
     fun rectanglePerimeter(length:Int, width:Int): Int {
         return 2*(length+width)
     }
 
+    /*
+    calculates the area of a rectangle
+
+    @length: length of the longest rectangle side
+    @width: length of the shortest rectangle side
+    @return: rectangle area
+     */
     fun rectangleArea(length:Int, width:Int): Int {
         return length*width
     }
 
+    /*
+    calculates the perimeter of a square
+
+    @sides: the length of all the sides of a square
+    @return: square perimeter
+     */
     fun squarePerimeter(sides:Int): Int {
         return 4*sides
     }
 
+    /*
+    calculates the area of a square
+
+    @sides: the length of all the sides of a square
+    @return: area of a square
+     */
     fun squareArea(sides:Int): Int {
         return sides*sides
     }
 
+    /*
+    calculates the perimeter of a triangle
+
+    @side1: side of triangle
+    @side2: side of triangle
+    @side3: side of triangle
+    @return: triangle perimeter
+     */
     fun trianglePerimeter(side1:Int, side2:Int, side3:Int): Int {
         return side1+side2+side3
     }
 
+    /*
+    calculates are of a triangle
+
+    @height: the length from the base to the highest point on the triangle (not a side)
+    @base: longest side of a triangle
+    @return: triangle area
+     */
     fun triangleArea(height:Double, base:Double): Double {
         return (height*base)/2
     }
 
+    /*
+    calculates the perimeter of a hexagon
+
+    @sides: side length of the hexagon
+    @return: hexagon perimeter
+     */
     fun hexagonPerimeter(sides:Int): Int {
         return sides*6
     }
 
+    /*
+    calculates the area of the hexagon
 
+    @sides: side length of a hexagon
+    @return: hexagon area
+     */
     fun hexagonArea(sides:Double): Double {
         return (3.0 * sqrt(3.0))/2.0*sides*sides
     }
